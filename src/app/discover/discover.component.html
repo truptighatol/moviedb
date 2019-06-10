@@ -1,0 +1,69 @@
+<div class="container mt-3">
+  <h3>Discover New Movies</h3>
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <span class="year"><label>Year</label></span>
+      <select (change)="getYear($event.target.value)" class="form-control" placeholder="Select Year">
+        <option value="{{y}}" *ngFor="let y of years">{{y}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <span class="year"><label>Sort By</label></span>
+      <select (change)="getSortData($event.target.value)" class="form-control">
+        <option value="{{s.key}}" *ngFor="let s of sorts">{{s.name}}</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <span class="year"><label>Genere</label></span>
+      <select (change)="getGenere($event.target.value)" class="form-control">
+        <option value="{{g.id}}" *ngFor="let g of genres">{{g.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-lg-6 col-xs-12 col-md-6" *ngFor="let dm of discoverMovies">
+      <div class="card">
+        <div class="card-horizontal">
+          <div class="img-square-wrapper">
+            <img class="" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{dm.poster_path}}" alt="Card image cap">
+          </div>
+          <div class="card-body disc">
+              <div class="row">
+                  <div class="col-md-2">
+                      <circle-progress
+                        [percent]="(dm.vote_average*10)"
+                        [radius]="25"
+                        [outerStrokeWidth]="5"
+                        [innerStrokeWidth]="2"
+                        [titleFontSize]= "10"
+                        [titleFontWeight]= "700"
+                        [unitsFontWeight]="700"
+                        [unitsColor] = "'#ffffff'"
+                        [titleColor]= "'#ffffff'"
+                        [outerStrokeColor]="'#65d378'"
+                        [innerStrokeColor]="'#d4e2d6'"
+                        [backgroundColor]= "'#353535'"
+                        [backgroundPadding]="0"
+                        [showSubtitle]= "false"
+                        [startFromZero]= "false"
+                        [animation]="true"
+                        [animationDuration]="300">
+                      </circle-progress>
+                  </div>
+                  <div class=" col-md-10">
+                      <h4 class="card-title mb-0"><a routerLink="/detail/{{dm.id}}">{{dm.title}}</a></h4>
+                      <p class="card-text">{{dm.release_date}}</p>
+                      <p class="card-text">{{dm.overview |slice:0:100}}</p>
+                  </div>
+               </div>
+           
+            
+            <div class="card-footer discover-more">
+              <p class="text-muted"><a class="card-text" routerLink="/detail/{{dm.id}}">More Info...</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

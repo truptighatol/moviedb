@@ -1,0 +1,278 @@
+<div class="fluid-container mt-3"  [ngStyle]="{'background-image': 'radial-gradient(circle at 20% 50%, rgba(3.14%, 14.51%, 40.39%, 0.98) 0%, rgba(3.14%, 14.51%, 40.39%, 0.88) 100%), url(' + bannerImage + ')', 'background-repeat': 'no-repeat','background-size': 'cover','background-position': '50% 50%'}" >
+    <div class="container">
+        <div class="row pt-4 pb-4">
+            <div class="col-md-3">
+                <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movieDetail.poster_path}}" />
+            </div>
+            <div class="col-md-8 pl-5">
+                <div class="general-info">
+                    <span>
+                        <h2 class="title">{{movieDetail.title}}</h2>
+                        <span class="release">({{movieDetail.release_date | slice:0:4}})</span>
+                    </span>
+                    <ul class="auto_action mt-4 p-0">
+                        <li class="chart">
+                            <div class="bar">
+                                    <circle-progress
+                                    [percent]="(movieDetail.vote_average*10)"
+                                    [radius]="25"
+                                    [outerStrokeWidth]="5"
+                                    [innerStrokeWidth]="2"
+                                    [titleFontSize]= "10"
+                                    [titleFontWeight]= "700"
+                                    [unitsFontWeight]="700"
+                                    [unitsColor] = "'#ffffff'"
+                                    [titleColor]= "'#ffffff'"
+                                    [outerStrokeColor]="'#65d378'"
+                                    [innerStrokeColor]="'#d4e2d6'"
+                                    [backgroundColor]= "'#353535'"
+                                    [backgroundPadding]="0"
+                                    [showSubtitle]= "false"
+                                    [startFromZero]= "false"
+                                    [animation]="true"
+                                    [animationDuration]="300">
+                                </circle-progress>
+                            </div>
+                            <div class="text">User<br/>Score</div>
+                        </li>
+                        <li class="tooltipx" ngbTooltip="Login to create and edit custom lists" placement="bottom" tooltipClass="my-custom-class">
+                            <a class=""><i class="fa fa-list" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="tooltipx" ngbTooltip="Login to add this movie to your favorite list" placement="bottom" tooltipClass="my-custom-class" >
+                            <a class=""><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="tooltipx" ngbTooltip="Login to add this movie to your watchlist" placement="bottom" tooltipClass="my-custom-class">
+                            <a class=""><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="tooltipx" ngbTooltip="Login to rate this movie" placement="bottom" tooltipClass="my-custom-class">
+                            <a class=""><i class="fa fa-star" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="video-play">
+                            <a href="#"><i class="fa fa-play mr-2" aria-hidden="true"></i>Play Trailer</a>
+                        </li>
+
+                    </ul>
+                    <div class="header-info">
+                        <h3 class="headh3">Overview</h3>
+                        <div class="overview"><p>{{movieDetail.overview}}</p></div>
+                        <h3 class="headh3 mt-5">Featured Crew</h3>
+                        <ol class="people profile">
+                            <li  *ngFor="let crew of crewName">
+                                <p><a routerLink="/people-details/{{crew.id}}">{{crew.name}}</a></p>
+                                <p class="job">{{crew.job}}</p>
+                            </li>
+                        </ol>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div class="fluid-container main-section">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light pl-0">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Discussion
+                    </a>
+                    <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">General</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Content Issue</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" routerLink="/reviews">Reviews</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Videos
+                    </a>
+                    <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Traiers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Teasers</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Images
+                    </a>
+                    <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Backdrops</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Posters</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link">Changes</a></li>
+                <li class="nav-item"><a class="nav-link">Reports</a></li>
+                <li class="nav-item"><a class="nav-link">Share</a></li>
+    
+            </ul>
+        </nav>
+    </div>
+    <hr class="m-0"/>
+    <div class="row m-0">
+        <div class="col-lg-8 col-md-8 col-xs-12 p-0">
+            <div class="whiteBg mt-5">
+                <h3 class="headh3">Top Billed Cast</h3>
+                <div class="cast-list">
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"[config]="slideConfig">
+                        <div ngxSlickItem *ngFor="let cast of castName" class="slide" style="width: 100px">
+                            <div class="m-1">
+                                <div class="card people-img card-img-top">
+                                    <a routerLink="/people-details/{{cast.id}}"><img class="img-fluid mx-auto"
+                                        src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{cast.profile_path}}" />
+                                    </a>
+                                    <div class="card-body people-page">
+                                        <div class="card-title">
+                                            <a routerLink="/people-details/{{cast.id}}">
+                                                <span>{{cast.name}}</span>
+                                                <p>{{cast.character | slice:0 :25 }}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ngx-slick-carousel>
+                </div>
+                <div class="social-list mt-3">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="navbar-brand"><h3 class="headh3">Social</h3></a>
+                            <a class="nav-item nav-link active" (click)="getSocialByReviews('review')" id="nav-review-tab" data-toggle="tab" href="#nav-review" role="tab"
+                                aria-controls="nav-review" aria-selected="false">Reviews</a>
+                            <a class="nav-item nav-link" (click)="getSocialByDiscussion('discussion')" id="nav-discussion-tab" data-toggle="tab" href="#nav-discussion" role="tab"
+                                aria-controls="nav-discussion" aria-selected="false">Discussions</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                       
+                        <div class="tab-pane fade show active" id="nav-review" role="tabpanel"aria-labelledby="nav-review-tab">
+                            <div class="container mt-2">                                   
+                                <div class="card" *ngFor="let review of movieReview"> 
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <div class="reviewer-img">
+                                                <img src="../../assets/avtar.jpeg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="card-title p-3 mb-0">
+                                                <h6>Featured Review</h6>
+                                                <h3 class="headh3">A review by {{review.author}}</h3>
+                                            </div>  
+                                            <div class="card-body">
+                                                <p>{{review.content | slice:0:450}} <a routerLink="/detail" class="card-text">read more...</a></p>
+                                            </div>
+                                        </div> 
+                                    </div>                 
+                                </div> 
+                            </div>  
+                        </div>
+                        <div class="tab-pane fade show active" id="nav-discussion" role="tabpanel"aria-labelledby="nav-discussion-tab">
+                            <div class="container mt-2">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-list mt-3">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="navbar-brand"><h3 class="headh3">Media</h3></a>
+                            <!-- <a class="nav-item nav-link active" id="nav-popular-tab" data-toggle="tab" href="#nav-popular"
+                                role="tab" aria-controls="nav-popular" aria-selected="true">Most Popular</a> -->
+                            <a class="nav-item nav-link active" (click)="getMediaByPosters('video')" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab"
+                                aria-controls="nav-video" aria-selected="false">Video {{videos.length}}</a>
+                            <a class="nav-item nav-link" (click)="getMediaByPosters('backdrop')" id="nav-backdrop-tab" data-toggle="tab" href="#nav-backdrop" role="tab"
+                                aria-controls="nav-backdrop" aria-selected="false">Backdrops {{backdrops.length}}</a>
+                            <a class="nav-item nav-link" (click)="getMediaByPosters('poster')" id="nav-poster-tab" data-toggle="tab" href="#nav-poster" role="tab"
+                                aria-controls="nav-poster" aria-selected="false">Posters {{posters.length}}</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                        <!-- <div class="tab-pane fade show active" id="nav-popular" role="tabpanel"aria-labelledby="nav-popular-tab">
+                        </div> -->
+                        <div class="tab-pane fade show active" id="nav-video" role="tabpanel"aria-labelledby="nav-video-tab">
+                            <div class="container mt-2">
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"[config]="slideConfig">
+                                    <div ngxSlickItem *ngFor="let video of videos" class="slide" style="width: 100px">
+                                        <div class="card-body text-center">
+                                            <p class="card-title"><b>{{video.name}}</b></p>
+                                            
+                                                <img src="http://img.youtube.com/vi/{{video.id}}/default.jpg">
+                                        
+                                        </div>
+                                    </div>
+                                </ngx-slick-carousel>
+                            </div>  
+                        </div>
+                        <div class="tab-pane fade show active" id="nav-backdrop" role="tabpanel"aria-labelledby="nav-backdrop-tab">
+                            <div class="container mt-2">
+                                    <!-- <ngx-skeleton-loader count="3" appearance="rectangle"> </ngx-skeleton-loader> -->
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"[config]="slideConfig">
+                                    <div ngxSlickItem *ngFor="let backdrop of backdrops" class="slide" style="width: 100px">
+                                            
+                                        <div class="card-body text-center">
+                                            <img src="https://image.tmdb.org/t/p/w300/{{backdrop.file_path}}" style="width:100%;"/>
+                                        </div>
+                                    </div>
+                                </ngx-slick-carousel>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="nav-poster" role="tabpanel"aria-labelledby="nav-poster-tab">
+                            <div class="container mt-2">
+                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"[config]="slideConfig">
+                                    <div ngxSlickItem *ngFor="let poster of posters" class="slide" style="width: 100px">
+                                        <div class="card-body text-center">
+                                            <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{poster.file_path}}" style="width:100%;"/>
+                                        </div>
+                                    </div>
+                                </ngx-slick-carousel>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12 grayBg p-0">
+            <div class="gray_content mt-5">
+                <span class="social-links">
+                    <a href="#"><i class="fa fa-facebook-official mr-1"></i></a>
+                    <a href="#"><i class="fa fa-instagram  mr-1"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square mr-1"></i></a>
+                </span>
+                <h5 class="headh5">Facts</h5>
+                <ol class="p-0 detail-info">
+                    <li>Status<p>{{movieDetail.status}}</p></li>
+                    <li>Original Language<p>{{movieDetail.spoken_languages[0].name}}</p></li>
+                    <li>Run Time<p>{{movieDetail.runtime | minstohrs }}</p></li>
+                    <li>Budget<p>{{movieDetail.budget}}</p></li>
+                    <li>Revenue<p>{{movieDetail.revenue}}</p></li>
+                </ol>
+                <h5 class="headh5">Generes</h5>
+                <ol class="p-0 detail-info">
+                    <li><span class="badge badge-light">Light</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>   
+</div>
+<div class="fluid-container">
+    <div class="recommendation">
+        <div class="heading text-center"><h3>YOU MIGHT ALSO LIKE</h3></div>
+        <div class="container mt-2">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"[config]="slideConfig">
+                <div ngxSlickItem *ngFor="let recommend of recommendation"class="slide">                            
+                    <div class="card">
+                        <img class="card-img-top img-fluid" routerLink="/detail/{{recommend.id}}" src="https://image.tmdb.org/t/p/w780/{{recommend.backdrop_path}}">
+                        <div class="card-body text-center">
+                            <p class="card-title"><b>{{recommend.original_title}}</b></p>
+                        </div>
+                    </div>                                  
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

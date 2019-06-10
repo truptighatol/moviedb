@@ -1,0 +1,39 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" routerLink="/home"><img src="assets/brand.svg" style="height: 70px" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-sm-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/movies" routerLinkActive="active">Movies <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/discover" routerLinkActive="active">Discover</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/people" routerLinkActive="active">People</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <div  class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 mt-2">
+            <div class="input-group">
+                <input class="form-control border-secondary" (change)="getSearchData($event.target.value)" type="search" placeholder="Search for movies..."/>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>  -->
+</header>

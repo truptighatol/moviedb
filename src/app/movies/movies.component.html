@@ -1,0 +1,69 @@
+<div class="container mt-1">
+  <div class="page-wrapper">
+    <div class="row">
+      <!-- <div class="col-lg-2 col-md-12 col-sm-12 mt-3 pt-4">
+        <div class="widget">
+            <div class="form-group m-0">
+              <label for="sel1" class="form-check-label widget-title">Select Language
+                <select id="sel1" (change)="getMovieByLang($event.target.value)" class="form-control mt-2 dropdown" >
+                  <option value="{{lang.iso_639_1}}" *ngFor="let lang of languages">{{lang.english_name}}</option>
+                </select>
+              </label>
+            </div> 
+        </div>      
+      </div> -->
+      <div class="col-lg-12 col-sm-12 col-md-12 mt-3">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6 col-md-6" *ngFor="let m of movies">
+            <div class="card">
+              <div class="card-horizontal">
+                <div class="img-square-wrapper">
+                  <img class="" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{m.poster_path}}"
+                    alt="Card image cap">
+                </div>
+                <div class="card-body disc">
+                 <div class="row">
+                    <div class="col-md-2">
+                        <circle-progress
+                          [percent]="(m.vote_average*10)"
+                          [radius]="25"
+                          [outerStrokeWidth]="5"
+                          [innerStrokeWidth]="2"
+                          [titleFontSize]= "10"
+                          [titleFontWeight]= "700"
+                          [unitsFontWeight]="700"
+                          [unitsColor] = "'#ffffff'"
+                          [titleColor]= "'#ffffff'"
+                          [outerStrokeColor]="'#65d378'"
+                          [innerStrokeColor]="'#d4e2d6'"
+                          [backgroundColor]= "'#353535'"
+                          [backgroundPadding]="0"
+                          [showSubtitle]= "false"
+                          [startFromZero]= "false"
+                          [animation]="true"
+                          [animationDuration]="300">
+                        </circle-progress>
+                    </div>
+                    <div class=" col-md-10">
+                        <h4 class="card-title mb-0"><a routerLink="/detail/{{m.id}}">{{m.title}}</a></h4>
+                        <p class="card-text mt-3">{{m.overview |slice:0:150}}</p>
+                    </div>
+                 </div>
+                  
+                  <div class="card-footer discover-more d-flex">
+                    <span class="text-muted"><a class="card-text" routerLink="/detail/{{m.id}}">More Info...</a></span>
+                    <span class="ml-auto heart-rate"><i class="fa fa-heart"></i><span>{{m.vote_count}}</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0 mt-4">
+          <ngb-pagination class="d-flex justify-content-center" (pageChange)="setPage($event)" [pageSize]="pageSize"
+            [(page)]="page" [maxSize]="5" [collectionSize]="collectionSize" [boundaryLinks]="true"></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

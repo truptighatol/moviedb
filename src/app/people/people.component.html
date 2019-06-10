@@ -1,0 +1,23 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="m-1" *ngFor="let p of people">
+      <div class="card people-img card-img-top">
+        <a routerLink="/people-details/{{p.id}}"><img class="img-fluid mx-auto"
+            src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{p.profile_path}}" />
+        </a>
+        <div class="card-body people-page">
+          <div class="card-title">
+            <a routerLink="/people-details/{{p.id}}">
+              <span>{{ p.name}}</span>
+              <p>{{p.known_for[0].original_title | slice:0 :25 }}...</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5">
+    <ngb-pagination class="d-flex justify-content-center" (pageChange)="getPeoplePage($event)" [pageSize]="pageSize"
+      [(page)]="page" [maxSize]="5" [collectionSize]="collectionSize" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>
