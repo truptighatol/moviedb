@@ -252,8 +252,8 @@
                     <li>Revenue<p>{{movieDetail.revenue}}</p></li>
                 </ol>
                 <h5 class="headh5">Generes</h5>
-                <ol class="p-0 detail-info">
-                    <li><span class="badge badge-light">Light</span></li>
+                <ol class="p-0 detail-info" *ngFor="let genere of movieDetail.genres let i=index">
+                    <li><span class="badge badge-primary">{{genere.name}}</span></li>
                 </ol>
             </div>
         </div>
