@@ -34,7 +34,7 @@
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.4.0",
     "slick-carousel": "^1.8.1",
-    "swiper": "^4.5.0",
+    "swiper": "^6.5.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
